@@ -1,0 +1,23 @@
+FAISS and Vector Similarity Search
+
+FAISS is a library designed for efficient vector similarity search. In systems based on embeddings, text chunks are represented as dense vectors, and these vectors must be stored and searched efficiently. FAISS provides the indexing and search functionality required for this task.
+
+Why FAISS Is Used in This System
+
+In the implemented RAG prototype, FAISS is used to store document chunk embeddings and retrieve the most similar chunks for a user question. When the user submits a query, the query is converted into a dense vector using the same embedding model as the indexed documents. The system then searches the FAISS index for the top-k most similar vectors.
+
+IndexFlatIP
+
+The current implementation uses FAISS IndexFlatIP, which performs exact similarity search using inner product. When embeddings are normalised before indexing and retrieval, inner product becomes closely related to cosine similarity. This design is useful for small or medium-sized prototype systems because it keeps retrieval behaviour simple, exact, and easy to interpret.
+
+Practical Advantages
+
+FAISS is attractive for a prototype because it can run locally and does not require a hosted vector database. It separates retrieval infrastructure from answer generation and makes it possible to experiment with indexing, top-k search, and retrieval evaluation in a controlled environment.
+
+Limitations
+
+Although FAISS is powerful, retrieval quality still depends on the embedding model and the chunking strategy. A strong index cannot compensate for weak embeddings or poorly designed document chunks. In addition, exact search may become less efficient for very large corpora, in which case approximate methods may be preferable.
+
+Conclusion
+
+FAISS is a practical vector search library for semantic retrieval. In a RAG system, its main role is to store document embeddings and return the top-k most similar chunks for a given query.

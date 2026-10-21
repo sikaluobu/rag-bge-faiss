@@ -1,0 +1,53 @@
+{
+  "description": "Eight questions covering every document in the corpus. Each question lists the source file(s) that contain the evidence, which lets retrieval quality be scored automatically by Hit@k and MRR.",
+  "questions": [
+    {
+      "id": "Q1",
+      "type": "factual",
+      "question": "What is retrieval-augmented generation and what problem does it address?",
+      "relevant_sources": ["rag_intro.txt"]
+    },
+    {
+      "id": "Q2",
+      "type": "factual",
+      "question": "What is FAISS used for in this system, and why was IndexFlatIP chosen?",
+      "relevant_sources": ["faiss_vector_search.txt"]
+    },
+    {
+      "id": "Q3",
+      "type": "factual",
+      "question": "Why was the BAAI/bge-small-en-v1.5 model selected as the embedding model?",
+      "relevant_sources": ["bge_embeddings.txt"]
+    },
+    {
+      "id": "Q4",
+      "type": "comparative",
+      "question": "How does dense retrieval differ from keyword matching such as BM25?",
+      "relevant_sources": ["dense_retrieval.txt"]
+    },
+    {
+      "id": "Q5",
+      "type": "explanatory",
+      "question": "Why does retrieval augmentation reduce hallucination in language models?",
+      "relevant_sources": ["llm_hallucination.txt"]
+    },
+    {
+      "id": "Q6",
+      "type": "implementation",
+      "question": "How is the prompt constructed in a RAG system, and why are source labels included?",
+      "relevant_sources": ["prompt_construction.txt"]
+    },
+    {
+      "id": "Q7",
+      "type": "explanatory",
+      "question": "What are the main dimensions used to evaluate a RAG system?",
+      "relevant_sources": ["rag_evaluation.txt"]
+    },
+    {
+      "id": "Q8",
+      "type": "implementation",
+      "question": "What stages does the offline indexing pipeline include, and why are chunks overlapped?",
+      "relevant_sources": ["system_workflow.txt", "rag_intro.txt"]
+    }
+  ]
+}

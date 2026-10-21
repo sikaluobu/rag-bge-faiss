@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# local secrets
+.env
+
+# generated artefacts
+index/
+eval/results/*.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vs/
+.idea/

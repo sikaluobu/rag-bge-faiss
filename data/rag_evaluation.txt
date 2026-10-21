@@ -1,0 +1,23 @@
+Evaluating RAG Systems
+
+Evaluating a RAG system is more complex than evaluating a standard question answering model because the pipeline includes both retrieval and generation. If an answer is poor, the weakness may come from the retriever, the prompt design, or the language model's use of the retrieved evidence. For this reason, RAG evaluation must consider more than final answer fluency.
+
+Core Evaluation Dimensions
+
+A useful RAG evaluation often includes answer correctness, groundedness, relevance, clarity, and retrieval quality. Correctness asks whether the answer is factually accurate. Groundedness asks whether the answer is supported by the retrieved chunks. Relevance asks whether the answer responds to the actual question. Clarity concerns whether the answer is understandable and sufficiently complete. Retrieval quality concerns whether the retrieved passages contain the information needed to answer the question.
+
+Why RAG Should Be Compared with a Non-RAG Baseline
+
+One useful evaluation design is to compare a RAG-based system with a non-RAG baseline. In the baseline condition, the language model answers the question without any retrieved context. In the RAG condition, retrieved chunks are inserted into the prompt before generation. This comparison helps determine whether retrieval augmentation actually improves answer groundedness and reliability.
+
+Why Chunk Size and Top-k Matter
+
+Evaluation should also examine retrieval settings. Chunk size affects how documents are segmented, and top-k controls how many chunks are passed to the language model. Smaller chunks may improve retrieval precision, while larger chunks may preserve more context. Lower top-k values may miss useful evidence, while higher values may introduce noise.
+
+Why Failure Cases Matter
+
+It is not enough to show only successful answers. Failure analysis is important because it reveals whether weak performance comes from poor retrieval, weak prompt design, or gaps in the corpus itself. In a grounded system, an appropriate refusal answer may be better than a confident hallucination.
+
+Conclusion
+
+RAG evaluation should consider both retrieval and generation. A useful analysis should examine answer correctness, groundedness, relevance, clarity, and the quality of the retrieved evidence.

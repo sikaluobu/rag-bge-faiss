@@ -1,0 +1,27 @@
+Prompt Construction in RAG Systems
+
+Prompt construction is the stage in which the retrieved evidence is transformed into structured input for the language model. This step is important because a retriever alone does not produce an answer. The language model must be given the retrieved information in a form that clearly separates supporting context from the user question.
+
+How the Prompt Is Built
+
+In a simple RAG pipeline, the retrieved chunks are formatted as evidence items and combined into a context block. The user question is then appended below this context. The prompt usually includes an explicit instruction telling the model to answer using only the provided evidence.
+
+Why This Matters
+
+A well-designed prompt improves groundedness. It tells the model that the retrieved passages are the authoritative basis for the answer. This is especially important in domain-specific technical question answering, where unsupported generalisation is a problem.
+
+Use of Source Labels
+
+Including source labels in the prompt can improve transparency. If each chunk is marked with its source file or document identifier, the retrieved evidence can later be traced back during testing and evaluation. This is useful for analysis because the researcher can see not only the answer but also where the answer came from.
+
+Why Refusal Is Useful
+
+The prompt can also instruct the model to refuse unsupported answers. For example, if the retrieved context does not contain the answer, the model can be told to say that it does not know. This behaviour is valuable because it reduces the chance that the system will hallucinate beyond the available evidence.
+
+Limitations
+
+Prompt construction cannot fully fix weak retrieval. If the wrong chunks are retrieved, even a carefully designed prompt may not produce a good answer. However, strong prompt design can still reduce the risk of unsupported generation and make failure cases easier to interpret.
+
+Conclusion
+
+Prompt construction connects retrieval with answer generation. In a RAG system, it is a key mechanism for improving groundedness, transparency, and control.

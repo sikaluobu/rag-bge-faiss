@@ -1,0 +1,35 @@
+System Workflow of the Implemented Prototype
+
+The implemented prototype follows an end-to-end RAG workflow consisting of an offline indexing stage and an online question answering stage. This workflow was designed to separate document preparation from runtime answering.
+
+Offline Indexing Stage
+
+In the offline stage, source documents are placed in the data directory. The indexing script reads each text file, applies basic text cleaning, splits the document into overlapping chunks, generates dense embeddings, and stores those embeddings in a FAISS index. At the same time, the system saves the original chunk texts and metadata such as source file names and chunk identifiers.
+
+Document Loading and Chunking
+
+The prototype currently uses plain-text documents. Each file is loaded independently and treated as a separate source. The text is segmented using a fixed-size word-based chunking strategy with overlap between adjacent chunks. This supports retrieval at sub-document level rather than at full-document level.
+
+Embedding and Indexing
+
+After chunking, the system encodes each chunk using the BGE embedding model. The resulting dense vectors are normalised and added to a FAISS index. The index and metadata are then saved to disk for later use.
+
+Online Question Answering Stage
+
+When the user submits a question, the system loads the saved index and metadata, encodes the question into the same semantic space, and retrieves the top-k most similar chunks. These retrieved chunks are then formatted into a prompt together with the user question.
+
+Prompt Construction and Answer Generation
+
+The prompt explicitly instructs the language model to answer using only the retrieved context. This prompt is sent to the generation model through the DeepSeek API. The final answer is then returned together with the retrieved chunks so that the supporting evidence can be inspected.
+
+Strengths of the Workflow
+
+The workflow is modular, transparent, and easy to evaluate. Each stage can be inspected separately: the corpus can be checked before indexing, the retrieved chunks can be examined before generation, and the final answer can be evaluated against the evidence.
+
+Limitations of the Workflow
+
+The workflow still depends on retrieval quality. If the wrong chunks are retrieved, the answer may remain weak. The current prototype also supports only plain-text files and uses a relatively simple prompt design.
+
+Conclusion
+
+The system workflow demonstrates that the project is not only a conceptual RAG design, but a functioning prototype in which indexing, retrieval, prompt construction, and answer generation are connected into a complete pipeline.

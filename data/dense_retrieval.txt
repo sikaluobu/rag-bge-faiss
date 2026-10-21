@@ -1,0 +1,23 @@
+Dense Retrieval and Semantic Search
+
+Traditional information retrieval often relies on lexical overlap between a query and a document. Methods such as keyword matching or BM25 perform well when the same important terms appear in both the question and the document. However, this approach can fail when two texts express the same idea using different wording. In technical or academic material, users often describe concepts differently from the way they appear in the source text, which creates a challenge for keyword-based systems.
+
+What Dense Retrieval Does
+
+Dense retrieval addresses this problem by representing both queries and documents as vectors in a shared semantic space. A retriever based on embeddings can compare the meaning of texts rather than only matching exact words. If a question asks about the purpose of vector search and a document explains similarity-based indexing without using exactly the same phrase, dense retrieval can still rank that document highly because the semantic relationship is captured in the embedding space.
+
+Semantic Search
+
+Semantic search is the practical application of this idea. Instead of searching for exact terms only, the system searches for semantically related passages. This makes dense retrieval especially useful for question answering, because users may ask explanatory questions, comparative questions, or procedural questions that do not map neatly onto one keyword.
+
+Comparison with Lexical Retrieval
+
+Lexical retrieval is still useful because it is efficient and interpretable. However, it may miss relevant information if the vocabulary differs between the query and the document. Dense retrieval is stronger when synonymy, paraphrasing, or contextual similarity matters. On the other hand, dense retrieval depends heavily on the quality of the embedding model. If the embedding model does not represent meaning well, retrieval quality will decline.
+
+Why Dense Retrieval Matters in RAG
+
+In a RAG system, the quality of the final answer depends strongly on whether the retriever can supply the right evidence. Dense retrieval is often preferred because it can return document chunks that are semantically related to the question, even when the wording is not identical. This makes it well suited to domain-specific question answering, where important concepts are often described using specialised language.
+
+Conclusion
+
+Dense retrieval is a key part of many modern RAG systems. It improves over purely lexical search by supporting semantic matching, but it must be combined with a strong embedding model and a suitable index to work effectively.

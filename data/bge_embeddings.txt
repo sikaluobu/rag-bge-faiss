@@ -1,0 +1,27 @@
+BGE Embeddings and Semantic Representation
+
+Text embeddings are numerical vector representations of text. Their purpose is to map semantically similar texts closer together in a shared vector space. In a retrieval system, embeddings are important because they allow the system to compare the meaning of a user query with the meaning of stored document chunks.
+
+Why Embeddings Are Needed
+
+Without embeddings, the system would need to rely only on lexical matching. That can be limiting in technical question answering because the same concept may be expressed using different words. An embedding model reduces this problem by encoding semantic relationships into the vector representation.
+
+Why BGE Was Selected
+
+The BGE family of models is designed for retrieval-oriented tasks. In the present system, BAAI/bge-small-en-v1.5 was selected because it is relatively lightweight, easy to use through the sentence-transformers interface, and suitable for English semantic retrieval. For a prototype-scale dissertation project, this model offers a practical balance between retrieval quality and computational cost.
+
+How BGE Is Used in the System
+
+BGE is used in two places. First, it encodes document chunks during indexing. Second, it encodes the user query during retrieval. Because both document chunks and user questions are represented in the same semantic space, the system can compare them directly using vector similarity search.
+
+Advantages of BGE
+
+A retrieval-oriented embedding model helps the system retrieve semantically relevant evidence even when the wording is not identical. This improves the retriever's ability to support downstream answer generation. BGE is also convenient for experimentation because it works well in a local Python pipeline without requiring a large external infrastructure.
+
+Limitations of Embedding Models
+
+The retriever is only as good as the embedding model. If the model fails to represent important semantic distinctions, retrieval results will be weak. Smaller models are also likely to trade some representational richness for speed and efficiency. Therefore, the selection of an embedding model is a meaningful design decision rather than a background technical detail.
+
+Conclusion
+
+BGE embeddings form the semantic foundation of the implemented retriever. By mapping both queries and chunks into the same vector space, the model enables dense retrieval and supports evidence-grounded question answering.

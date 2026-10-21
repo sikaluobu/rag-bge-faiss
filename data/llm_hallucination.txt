@@ -1,0 +1,23 @@
+Hallucination in Large Language Models
+
+Large language models are capable of producing fluent and convincing answers, but fluency does not guarantee factual reliability. A common problem is hallucination, where the model generates statements that sound plausible but are unsupported, inaccurate, or invented.
+
+Why Hallucination Happens
+
+A standalone language model answers from patterns stored in its internal parameters. This can be effective for general tasks, but it becomes risky when the question depends on specific source material. If the model does not have access to an external document collection, it may still try to answer confidently even when the necessary evidence is unavailable.
+
+Why This Matters in Domain-Specific Question Answering
+
+In domain-specific question answering, users expect answers that reflect a defined body of knowledge. If the system produces unsupported claims, trust is reduced and the answer may be practically unusable. This is especially important in technical, academic, or professional settings where traceability matters.
+
+How Retrieval Helps
+
+Retrieval augmentation attempts to reduce this problem by introducing external evidence before generation. Instead of forcing the model to answer only from internal parametric memory, the system provides relevant external context. This does not eliminate all errors, but it can improve groundedness and make the answer more dependent on explicit evidence.
+
+When Hallucination Can Still Occur
+
+Retrieval augmentation is not a complete solution. If the retriever returns weak or irrelevant chunks, the answer may still be incomplete or partially unsupported. Hallucination can also occur if the generation model fails to use the retrieved context carefully. For this reason, both retrieval quality and prompt design remain important.
+
+Conclusion
+
+Hallucination is a major limitation of standalone language models in domain-specific QA. Retrieval augmentation is useful because it gives the model a stronger factual basis for answering.

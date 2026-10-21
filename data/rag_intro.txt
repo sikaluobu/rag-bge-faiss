@@ -1,0 +1,23 @@
+What is Retrieval-Augmented Generation
+
+Retrieval-Augmented Generation, often abbreviated as RAG, is a question answering and text generation framework that combines information retrieval with large language model generation. Instead of forcing the model to answer only from internal parametric memory, the system first retrieves relevant passages from an external document collection and then uses those passages as context for answer generation. This design is useful when the task requires answers that are grounded in specific source material rather than only in general background knowledge.
+
+Main Pipeline of a RAG System
+
+A typical RAG pipeline includes several connected stages. First, source documents are collected and prepared for indexing. Second, the documents are split into smaller chunks so that the retriever can search at sub-document level rather than over entire long files. Third, these chunks are converted into dense vector representations using an embedding model. Fourth, the vectors are stored in a search index, often a vector index such as FAISS. Fifth, when a user submits a question, the system embeds the query and retrieves the most similar chunks. Finally, the retrieved chunks are inserted into a prompt and sent to the language model to generate an answer.
+
+Why RAG is Useful
+
+RAG is useful because standalone large language models may produce plausible but unsupported answers. A retrieval-augmented system can reduce this problem by supplying relevant external evidence before generation. This makes the answer more dependent on retrieved documents and less dependent on hidden model memory alone. In practical terms, RAG is especially valuable in domain-specific question answering, where users expect the answer to reflect a limited technical corpus rather than the model's general knowledge.
+
+Advantages of RAG
+
+RAG has several practical advantages. It improves answer grounding by connecting the generated response to retrieved evidence. It also makes it easier to update the knowledge base, because new documents can be indexed without retraining the language model. In addition, RAG can improve transparency because the system can show which passages were used to support the answer.
+
+Limitations of RAG
+
+RAG is not automatically reliable. If the retriever fails to find useful passages, the generator may still produce weak answers. Performance also depends on chunk size, retrieval depth, prompt design, and the language model's ability to use the provided context. Therefore, retrieval design is a central part of system quality rather than a minor implementation detail.
+
+Conclusion
+
+RAG is a practical method for combining external knowledge retrieval with language generation. It is especially useful in domain-specific question answering, where users need answers that are supported by source documents rather than by general model knowledge alone.
